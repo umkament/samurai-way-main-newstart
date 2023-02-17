@@ -1,0 +1,9 @@
+.header {
+    grid-area: header; /* дает название*/
+    background-color: #b2dfff;
+}
+/*если в нашем header лежит картинка, сделай ей соответствующий размер*/
+.header img {
+    width: 60px;
+    border-radius: 15px;
+}

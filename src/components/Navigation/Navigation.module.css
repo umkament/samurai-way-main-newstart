@@ -1,0 +1,15 @@
+
+.nav {
+    grid-area: nav;
+    background-color: #a4ffc5;
+    padding: 20px;
+}
+
+.item a {    /*мы пишем здесь "а", потому что в NavLink лежит "а", и при нажатии появляется active */
+    color: #af69ff;
+    text-decoration: none;
+}
+
+.item a.active {
+    color: #ff999b;
+}
