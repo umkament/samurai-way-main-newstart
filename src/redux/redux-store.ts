@@ -10,12 +10,14 @@ import {
   unfollow,
   usersReducer
 } from "./users-reducer";
+import {authReducer, setAuthUserData} from "./auth-reducer";
 
 
 let rootReducer = combineReducers({
   messagesPage: messagesReducer,
   profilePage: profileReducer,
-  users: usersReducer
+  users: usersReducer,
+  auth: authReducer
 })
 
 export let store = createStore(rootReducer);
@@ -36,4 +38,5 @@ export type ActionType = ReturnType<typeof addPostAC> |
    ReturnType<typeof setCurrentPage> |
    ReturnType<typeof setTotalUsersCount> |
    ReturnType<typeof toggleIsFetching> |
-   ReturnType<typeof setUserProfile>
+   ReturnType<typeof setUserProfile> |
+   ReturnType<typeof setAuthUserData>
