@@ -1,6 +1,12 @@
 import React from 'react';
 import s from './Post.module.css'
 
+export type PostsType = {
+  id: number
+  message: string
+  likesCount: number
+}
+
 type PostPropsType ={
   message: string
   likesCount: number

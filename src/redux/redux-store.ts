@@ -1,5 +1,5 @@
 import {combineReducers, createStore} from "redux";
-import {DialogsType, messagesReducer, MessagesType, sendMessageAC, updateMessageBodyAC} from "./messagePage-reducer";
+import { messagesReducer, sendMessageAC, updateMessageBodyAC} from "./messagePage-reducer";
 import {addPostAC, profileReducer, setUserProfile, updateTextPostAC} from "./profilePage-reducer";
 import {
   follow,
@@ -11,30 +11,12 @@ import {
   usersReducer
 } from "./users-reducer";
 
-export type PostsType = {
-  id: number
-  message: string
-  likesCount: number
-}
-export type profilePageType = {
-  posts: Array<PostsType>
-  newPostText: string
-}
-
-export type messagesPageType = {
-  dialogs: Array<DialogsType>
-  messages: Array<MessagesType>
-  newMessageBody: string
-}
-
-
 
 let rootReducer = combineReducers({
   messagesPage: messagesReducer,
   profilePage: profileReducer,
   users: usersReducer
 })
-
 
 export let store = createStore(rootReducer);
 
@@ -52,6 +34,6 @@ export type ActionType = ReturnType<typeof addPostAC> |
    ReturnType<typeof unfollow> |
    ReturnType<typeof setUsers> |
    ReturnType<typeof setCurrentPage> |
-   ReturnType<typeof setTotalUsersCount>|
-   ReturnType<typeof toggleIsFetching>|
+   ReturnType<typeof setTotalUsersCount> |
+   ReturnType<typeof toggleIsFetching> |
    ReturnType<typeof setUserProfile>

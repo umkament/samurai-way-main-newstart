@@ -1,6 +1,5 @@
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../redux/redux-store";
-import {Dispatch} from "redux";
 import {
   follow,
   setCurrentPage, setTotalUsersCount,

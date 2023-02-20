@@ -12,6 +12,8 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 
 
 
+
+
 const App = () => {
 
   return (
@@ -24,7 +26,7 @@ const App = () => {
             <DialogsContainer />
          }
          />
-         <Route path='/profile' render={() =>
+         <Route path='/profile/:userId?' render={() =>
             <ProfileContainer />
          }
          />
