@@ -3,17 +3,17 @@ import styles from "./Users.module.css"
 import userPhoto from "./../../assets/userPhoto.jpg copy.png"
 import {UserType} from "../../redux/users-reducer";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {usersAPI} from "../../api/api";
 
 
 type UsersPropsType = {
   totalCount: number
   pageSize: number
   currentPage: number
-  onPageClick: (pageNumber: number)=>void
+  onPageClick: (pageNumber: number) => void
   usersPage: Array<UserType>
-  unfollow: (userId: number)=>void
-  follow: (userId: number)=>void
+  unfollow: (userId: number) => void
+  follow: (userId: number) => void
 }
 
 const Users: FC<UsersPropsType> = (props) => {
@@ -49,30 +49,22 @@ const Users: FC<UsersPropsType> = (props) => {
     {u.followed
        ?
        <button onClick={() => {
-         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
-           withCredentials: true,
-           headers: {
-             'API-KEY': 'daa4a463-c0a4-4c70-8a08-708c086229cf'
-           }
-         }).then(response => {
-           if (response.data.resultCode === 0) {
-             props.unfollow(u.id)
-           }
-         })
+         usersAPI.unfollowUser(u.id)
+            .then(data => {
+              if (data.resultCode === 0) {
+                props.unfollow(u.id)
+              }
+            })
        }}>
          Unfollow</button>
        :
        <button onClick={() => {
-         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
-           withCredentials: true,
-           headers: {
-             'API-KEY': 'daa4a463-c0a4-4c70-8a08-708c086229cf'
-           }
-         }).then(response => {
-           if (response.data.resultCode === 0) {
-             props.follow(u.id)
-           }
-         })
+         usersAPI.followUser(u.id)
+            .then(data => {
+              if (data.resultCode === 0) {
+                props.follow(u.id)
+              }
+            })
        }}>Follow</button>
     }
   </div>
@@ -94,6 +86,5 @@ const Users: FC<UsersPropsType> = (props) => {
      </div>
   )
 }
-
 
 export default Users;

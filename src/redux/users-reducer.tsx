@@ -22,7 +22,7 @@ let initialState = {
   users: [] as Array<UserType>,
   pageSize: 5,
   totalUsersCount: 0,
-  currentPage: 2,
+  currentPage: 3,
   isFetching: false
 }
 

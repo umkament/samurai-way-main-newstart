@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import Profile from "./Profile";
-import axios from "axios";
 import {AppRootStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
 import {ProfileType, setUserProfile} from "../../redux/profilePage-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
+import {profileAPI} from "../../api/api";
 
 
 type MapDispatchPropsType = {
@@ -28,9 +28,9 @@ let ProfileContainer = (props: PropsType) => {
     if (!userId) {
       userId = '2'
     }
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-       .then(responce => {
-         props.setUserProfile(responce.data)
+    profileAPI.getUserProfile(userId)
+       .then(data => {
+         props.setUserProfile(data)
     })
   }, [])
     return (
