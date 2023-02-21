@@ -1,12 +1,12 @@
 import {combineReducers, createStore} from "redux";
-import { messagesReducer, sendMessageAC, updateMessageBodyAC} from "./messagePage-reducer";
+import {messagesReducer, sendMessageAC, updateMessageBodyAC} from "./messagePage-reducer";
 import {addPostAC, profileReducer, setUserProfile, updateTextPostAC} from "./profilePage-reducer";
 import {
   follow,
   setCurrentPage,
   setTotalUsersCount,
   setUsers,
-  toggleIsFetching,
+  toggleIsFetching, toggleIsFollowingProgress,
   unfollow,
   usersReducer
 } from "./users-reducer";
@@ -39,4 +39,5 @@ export type ActionType = ReturnType<typeof addPostAC> |
    ReturnType<typeof setTotalUsersCount> |
    ReturnType<typeof toggleIsFetching> |
    ReturnType<typeof setUserProfile> |
-   ReturnType<typeof setAuthUserData>
+   ReturnType<typeof setAuthUserData> |
+   ReturnType<typeof toggleIsFollowingProgress>

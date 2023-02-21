@@ -10,10 +10,12 @@ type UsersPropsType = {
   totalCount: number
   pageSize: number
   currentPage: number
+  followingInProgress: number[]
   onPageClick: (pageNumber: number) => void
   usersPage: Array<UserType>
   unfollow: (userId: number) => void
   follow: (userId: number) => void
+  toggleIsFollowingProgress: (isFetching: boolean, userId: number) => void
 }
 
 const Users: FC<UsersPropsType> = (props) => {
@@ -48,22 +50,27 @@ const Users: FC<UsersPropsType> = (props) => {
   <div>
     {u.followed
        ?
-       <button onClick={() => {
+       <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+         props.toggleIsFollowingProgress(true, u.id)
          usersAPI.unfollowUser(u.id)
             .then(data => {
               if (data.resultCode === 0) {
                 props.unfollow(u.id)
               }
+              props.toggleIsFollowingProgress(false, u.id)
             })
+
        }}>
          Unfollow</button>
        :
-       <button onClick={() => {
+       <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
+         props.toggleIsFollowingProgress(true, u.id)
          usersAPI.followUser(u.id)
             .then(data => {
               if (data.resultCode === 0) {
                 props.follow(u.id)
               }
+              props.toggleIsFollowingProgress(false, u.id)
             })
        }}>Follow</button>
     }
