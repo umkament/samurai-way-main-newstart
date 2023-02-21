@@ -125,8 +125,7 @@ export const followTC = (userId: number)=> {
        })
   }
 }
-export const unfollowTC = (userId: number)=> {
-  return (dispatch: Dispatch) => {
+export const unfollowTC = (userId: number) => (dispatch: Dispatch) =>{
     dispatch(toggleIsFollowingProgress(true, userId))
     usersAPI.unfollowUser(userId)
        .then(data => {
@@ -136,4 +135,4 @@ export const unfollowTC = (userId: number)=> {
          dispatch(toggleIsFollowingProgress(false, userId))
        })
   }
-}
+

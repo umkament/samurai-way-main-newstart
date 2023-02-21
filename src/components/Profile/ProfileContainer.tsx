@@ -8,9 +8,11 @@ import {RouteComponentProps, withRouter} from "react-router-dom";
 
 type MapDispatchPropsType = {
   getProfile: (userId: string)=>void
+
 }
 type MapStatePropsType = {
   profile: ProfileType | null
+  isAuth: boolean
 }
 
 type PathParamsType = {
@@ -32,13 +34,15 @@ let ProfileContainer = (props: PropsType) => {
     return (
          <Profile profile={props.profile}
                   getProfile={props.getProfile}
+                  isAuth={props.isAuth}
          />
     )
 }
 
 
 let mapStateToProps = (state: AppRootStateType): MapStatePropsType  => ({
-  profile: state.profilePage.profile
+  profile: state.profilePage.profile,
+  isAuth: state.auth.isAuth
 })
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer);
