@@ -1,4 +1,4 @@
-import {combineReducers, createStore} from "redux";
+import {applyMiddleware, combineReducers, createStore} from "redux";
 import {messagesReducer, sendMessageAC, updateMessageBodyAC} from "./messagePage-reducer";
 import {addPostAC, profileReducer, setUserProfile, updateTextPostAC} from "./profilePage-reducer";
 import {
@@ -11,6 +11,8 @@ import {
   usersReducer
 } from "./users-reducer";
 import {authReducer, setAuthUserData} from "./auth-reducer";
+import thunkMiddleware from "redux-thunk";
+
 
 
 let rootReducer = combineReducers({
@@ -20,7 +22,7 @@ let rootReducer = combineReducers({
   auth: authReducer
 })
 
-export let store = createStore(rootReducer);
+export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
 
 export type AppRootStateType = ReturnType<typeof rootReducer>
 

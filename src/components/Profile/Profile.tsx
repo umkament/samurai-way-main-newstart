@@ -6,7 +6,7 @@ import {ProfileType} from "../../redux/profilePage-reducer";
 
 type ProfilePropsType = {
   profile: ProfileType | null
-  setUserProfile: (profile: ProfileType | null )=>void
+  getProfile: (userId: string)=>void
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
@@ -14,7 +14,6 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
   return (
      <div>
        <ProfileInfo profile={props.profile}/>
-
        <MyPostsContainer/>
        <MyPostsContainer/>
      </div>

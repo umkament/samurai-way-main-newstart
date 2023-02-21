@@ -1,6 +1,8 @@
 import {ActionType} from "./redux-store";
 import {PostsType} from "../components/Profile/MyPosts/Post/Post";
 import React from "react";
+import {Dispatch} from "redux";
+import {profileAPI} from "../api/api";
 
 export type InitialStateProfileType = typeof initialState
 
@@ -74,3 +76,12 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
 export const addPostAC = () => ({type: 'ADD-POST'} as const)
 export const updateTextPostAC = (textOfPost: string) => ({type: "UPDATE-TEXT-POST", textOfPost} as const)
 export const setUserProfile = (profile: ProfileType | null) => ({type: "SET-USER-PROFILE", profile} as const)
+
+export const getProfile = (userId: string) => {
+  return (dispatch: Dispatch) => {
+    profileAPI.getUserProfile(userId)
+       .then(data => {
+         dispatch(setUserProfile(data))
+       })
+  }
+}
