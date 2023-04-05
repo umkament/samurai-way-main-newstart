@@ -13,8 +13,7 @@ import {
 import {authReducer, setAuthUserData} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
 
-
-
+//когда комбайним редьюсеРЫ, на выходе получается ОДИН рутовый редьюсеР (rootReducer)
 let rootReducer = combineReducers({
   messagesPage: messagesReducer,
   profilePage: profileReducer,
@@ -30,16 +29,16 @@ export type AppRootStateType = ReturnType<typeof rootReducer>
 window.store = store;
 
 
-export type ActionType = ReturnType<typeof addPostAC> |
-   ReturnType<typeof updateTextPostAC> |
-   ReturnType<typeof updateMessageBodyAC> |
-   ReturnType<typeof sendMessageAC> |
-   ReturnType<typeof follow> |
-   ReturnType<typeof unfollow> |
-   ReturnType<typeof setUsers> |
-   ReturnType<typeof setCurrentPage> |
-   ReturnType<typeof setTotalUsersCount> |
-   ReturnType<typeof toggleIsFetching> |
-   ReturnType<typeof setUserProfile> |
-   ReturnType<typeof setAuthUserData> |
-   ReturnType<typeof toggleIsFollowingProgress>
+export type ActionType = ReturnType<typeof addPostAC>
+   | ReturnType<typeof updateTextPostAC>
+   | ReturnType<typeof updateMessageBodyAC>
+   | ReturnType<typeof sendMessageAC>
+   | ReturnType<typeof follow>
+   | ReturnType<typeof unfollow>
+   | ReturnType<typeof setUsers>
+   | ReturnType<typeof setCurrentPage>
+   | ReturnType<typeof setTotalUsersCount>
+   | ReturnType<typeof toggleIsFetching>
+   | ReturnType<typeof setUserProfile>
+   | ReturnType<typeof setAuthUserData>
+   | ReturnType<typeof toggleIsFollowingProgress>
