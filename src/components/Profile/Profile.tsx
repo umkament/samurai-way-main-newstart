@@ -11,7 +11,7 @@ type ProfilePropsType = {
 }
 
 const Profile: React.FC<ProfilePropsType> = (props) => {
-  debugger
+
   //if (!props.isAuth) return <Redirect to={'/login'}/>
   return (
      <div>
