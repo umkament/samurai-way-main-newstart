@@ -2,17 +2,20 @@ import React, {useEffect} from 'react';
 import Profile from "./Profile";
 import {AppRootStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {getProfile, ProfileType} from "../../redux/profilePage-reducer";
+import {getProfile,ProfileType} from "../../redux/profilePage-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
 
 
 type MapDispatchPropsType = {
   getProfile: (userId: string)=>void
+  //getStatusProfile: (userId: string)=>void
+  //updateStatusProfile: (status: string)=>void
 
 }
 type MapStatePropsType = {
   profile: ProfileType | null
+  status: string
  // isAuth: boolean
 }
 
@@ -31,10 +34,15 @@ let ProfileContainer = (props: PropsType) => {
       userId = '2'
     }
    props.getProfile(userId)
+   // props.getStatusProfile(userId)
+
   }, [])
     return (
          <Profile profile={props.profile}
                   getProfile={props.getProfile}
+                 // status={props.status}
+                 // updateStatusProfile={props.updateStatusProfile}
+                  //getStatusProfile={props.getStatusProfile}
                  // isAuth={props.isAuth}
          />
     )
@@ -43,6 +51,7 @@ let ProfileContainer = (props: PropsType) => {
 
 let mapStateToProps = (state: AppRootStateType): MapStatePropsType  => ({
   profile: state.profilePage.profile,
+  status: state.profilePage.status
   //isAuth: state.auth.isAuth
 })
 

@@ -3,7 +3,7 @@ import React from "react";
 
 
 type ProfileStatusPropsType = {
-
+//status: string
 }
 
 export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
