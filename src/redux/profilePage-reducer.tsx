@@ -94,7 +94,6 @@ export const getProfile = (userId: string) => {
   }
 }
 
-/*
 export const getStatusProfile = (userId: string) => {
   return (dispatch: Dispatch) => {
     profileAPI.getStatusProfile(userId)
@@ -105,6 +104,7 @@ export const getStatusProfile = (userId: string) => {
 }
 
 export const updateStatusProfile = (status: string) => {
+  console.log(status)
   return (dispatch: Dispatch) => {
     profileAPI.updateStatusProfile(status)
        .then(res => {
@@ -113,4 +113,3 @@ export const updateStatusProfile = (status: string) => {
        }})
 }
 }
-*/

@@ -7,8 +7,8 @@ import {ProfileType} from "../../redux/profilePage-reducer";
 type ProfilePropsType = {
   profile: ProfileType | null
   getProfile: (userId: string) => void
-  //status: string
-  //updateStatusProfile: (userId: string) => void
+  status: string
+  updateStatusProfile: (userId: string) => void
   //getStatusProfile: (userId: string)=>void
   //isAuth: boolean
 }
@@ -19,8 +19,8 @@ const Profile: React.FC<ProfilePropsType> = (props) => {
   return (
      <div>
        <ProfileInfo profile={props.profile}
-                   // status={props.status}
-                    //updateStatusProfile={props.updateStatusProfile}
+                   status={props.status}
+                   updateStatusProfile={props.updateStatusProfile}
        />
        <MyPostsContainer/>
        <MyPostsContainer/>

@@ -1,15 +1,16 @@
 import React from "react";
 
 
-
 type ProfileStatusPropsType = {
-//status: string
+status: string
+  updateStatusProfile: (userId: string) => void
 }
 
 export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
-
+  statusInputRef = React.createRef()
   state = {
-    editMode: false
+    editMode: false,
+    status: this.props.status
   }
   activateEditMode=()=>{
 this.setState({
@@ -21,6 +22,13 @@ this.setState({
     this.setState({
       editMode: false
     })
+    this.props.updateStatusProfile(this.state.status)
+  }
+  onStatusChange=(e: { currentTarget: { value: any; }; })=>{
+    this.setState({
+      status: e.currentTarget.value
+    })
+
   }
 
 
@@ -29,11 +37,11 @@ this.setState({
     return <>
       {!this.state.editMode &&
       <div>
-        <span onDoubleClick={this.activateEditMode}>status</span>
+        <span onDoubleClick={this.activateEditMode}>{this.props.status || "empty status"}</span>
       </div>}
       {this.state.editMode &&
       <div>
-        <input onBlur={this.deactivateEditMode} autoFocus={true} value={"status"}/>
+        <input onChange={this.onStatusChange} onBlur={this.deactivateEditMode} autoFocus={true} value={this.state.status}/>
       </div>}
     </>
   }

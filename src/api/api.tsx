@@ -31,21 +31,23 @@ export const usersAPI = {
 
 export const profileAPI = {
   getUserProfile(userId: string) {
-    return instance.get(`profile/` + userId).then(response => {
+    return instance.get(`profile/` + userId)
+  /*   /!**!/  .then(response => {
       return response.data
-    })
+    })*/
   },
-/*  getStatusProfile(userId: string){
-    return instance.get(`profile/status` + userId).then(res => {
+  getStatusProfile(userId: string){
+    return instance.get(`profile/status/` + userId)
+  /*     .then(res => {
       return res.data
-    })
+    })*/
   },
   updateStatusProfile(status: string){
     return instance.put(`profile/status`, {status: status})
-       .then(res => {
-         return res.data.status
-       })
-  }*/
+    /*   .then(res => {
+         return res.data
+       })*/
+  }
 }
 
 export const authAPI = {
