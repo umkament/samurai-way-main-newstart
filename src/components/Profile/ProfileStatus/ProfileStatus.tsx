@@ -31,9 +31,19 @@ this.setState({
 
   }
 
+  componentDidUpdate(prevProps: Readonly<ProfileStatusPropsType>, prevState: Readonly<{}>, snapshot?: any) {
+    console.log('componentDidUpdate')
+    if (prevProps.status !== this.props.status) {
+      this.setState({
+        status: this.props.status
+      })
+    }
+
+  }
+
 
   render() {
-
+    console.log('render')
     return <>
       {!this.state.editMode &&
       <div>
