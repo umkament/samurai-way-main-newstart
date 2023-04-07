@@ -3,8 +3,13 @@ import s from './Dialogs.module.css'
 import {Message} from "./Message/Message";
 import {DialogItem} from "./DialogsItem/DialogsItem";
 import {DialogsPropsType} from "./DialogsContainer";
+import {Field, InjectedFormProps} from "redux-form";
 
 export const Dialogs: React.FC<DialogsPropsType>= (props) => {
+
+  const onSubmit = (formData: FormDataType) => {
+    console.log(formData)
+  }
 
   let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>)
 
@@ -31,13 +36,26 @@ export const Dialogs: React.FC<DialogsPropsType>= (props) => {
        <div className={s.messages}>
          <div>{messagesElements}</div>
        </div>
-       <div>
-         <textarea placeholder='enter your message'
-                   value={newMessageBody}
-                   onChange={addMessChange}
-         />
-         <div><button onClick={addMessClick}>send</button></div>
-       </div>
+      <DialogForm onSubmit={onSubmit}/>
      </div>
   );
 };
+
+export const DialogForm: React.FC<InjectedFormProps<FormDataType>> = () => {
+  return (
+     <form>
+         <Field component={'textarea'} name={'textarea'}
+                placeholder='enter your message'
+                value={newMessageBody}
+                onChange={addMessChange}
+         />
+       <div><button onClick={addMessClick}>send</button></div>
+     </form>
+
+  )
+
+}
+
+type FormDataDialogType = {
+
+}

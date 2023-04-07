@@ -12,13 +12,15 @@ import {
 } from "./users-reducer";
 import {authReducer, setAuthUserData} from "./auth-reducer";
 import thunkMiddleware from "redux-thunk";
+import {reducer as formReducer} from 'redux-form'
 
 //когда комбайним редьюсеРЫ, на выходе получается ОДИН рутовый редьюсеР (rootReducer)
 let rootReducer = combineReducers({
   messagesPage: messagesReducer,
   profilePage: profileReducer,
   users: usersReducer,
-  auth: authReducer
+  auth: authReducer,
+  form: formReducer
 })
 
 export let store = createStore(rootReducer, applyMiddleware(thunkMiddleware));
