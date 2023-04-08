@@ -37,16 +37,10 @@ let initialState = {
 
 export const messagesReducer = (state: InitialStateMessageType = initialState, action: ActionType): InitialStateMessageType => {
   switch (action.type) {
-    case 'UPDATE-MESSAGE-BODY':
-      return  {
-        ...state,
-        newMessageBody: action.textOfMessage
-      }
     case 'SEND-MESSAGE':
-      let textOfMessage = state.newMessageBody
+      let textOfMessage = action.newMessageBody
       return {
         ...state,
-        newMessageBody: '',
         messages: [...state.messages, {id: 6, message: textOfMessage}]
       }
     default:
@@ -54,7 +48,5 @@ export const messagesReducer = (state: InitialStateMessageType = initialState, a
   }
 }
 
-export const updateMessageBodyAC = (textOfMessage: string) =>
-   ({type: "UPDATE-MESSAGE-BODY", textOfMessage: textOfMessage} as const)
 
-export const sendMessageAC = () => ({type: "SEND-MESSAGE"} as const)
+export const sendMessageAC = (newMessageBody: string) => ({type: "SEND-MESSAGE", newMessageBody} as const)

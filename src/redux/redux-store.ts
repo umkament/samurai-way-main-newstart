@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import {messagesReducer, sendMessageAC, updateMessageBodyAC} from "./messagePage-reducer";
-import {addPostAC, profileReducer, setStatusProfileAC, setUserProfile, updateTextPostAC} from "./profilePage-reducer";
+import {messagesReducer, sendMessageAC} from "./messagePage-reducer";
+import {addPostAC, profileReducer, setStatusProfileAC, setUserProfile} from "./profilePage-reducer";
 import {
   follow,
   setCurrentPage,
@@ -32,8 +32,6 @@ window.store = store;
 
 
 export type ActionType = ReturnType<typeof addPostAC>
-   | ReturnType<typeof updateTextPostAC>
-   | ReturnType<typeof updateMessageBodyAC>
    | ReturnType<typeof sendMessageAC>
    | ReturnType<typeof follow>
    | ReturnType<typeof unfollow>

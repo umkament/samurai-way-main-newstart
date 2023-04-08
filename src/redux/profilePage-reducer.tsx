@@ -53,18 +53,12 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
     case 'ADD-POST':
       let newPost: PostsType = {
         id: 3,
-        message: state.newPostText,
+        message: action.newPostText,
         likesCount: 0
       }
       return {
         ...state,
         posts: [...state.posts, newPost],
-        newPostText: ''
-      }
-    case 'UPDATE-TEXT-POST':
-      return {
-        ...state,
-        newPostText: action.textOfPost
       }
     case "SET-USER-PROFILE":
       return {
@@ -79,8 +73,7 @@ export const profileReducer = (state: InitialStateProfileType = initialState, ac
 }
 
 //actions
-export const addPostAC = () => ({type: 'ADD-POST'} as const)
-export const updateTextPostAC = (textOfPost: string) => ({type: "UPDATE-TEXT-POST", textOfPost} as const)
+export const addPostAC = (newPostText: string) => ({type: 'ADD-POST', newPostText} as const)
 export const setUserProfile = (profile: ProfileType | null) => ({type: "SET-USER-PROFILE", profile} as const)
 export const setStatusProfileAC = (status: string) => ({type: "SET-STATUS-PROFILE", status} as const)
 
