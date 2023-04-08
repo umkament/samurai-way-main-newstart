@@ -3,6 +3,8 @@ import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {MyPostsPropsType} from "./MyPostsContainer";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
+import {maxLengthTC,minLengthTC, requiredField} from "../../../utils/validators/validators";
+import {Textarea} from "../../FormsForComponent/FormsControl";
 
 type FormDataMyPostType = {
   newPostText: string
@@ -14,7 +16,7 @@ export const MyPosts: React.FC<MyPostsPropsType> = (props) => {
     props.addPost(values.newPostText)
   }
   let postsElement = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
-  let newPostElement = React.createRef<HTMLTextAreaElement>();
+
 
 
   return (
@@ -32,9 +34,10 @@ export const MyPostForm: React.FC<InjectedFormProps<FormDataMyPostType>> = (prop
   return(
      <form onSubmit={props.handleSubmit}>
        <div>
-           <Field component={'textarea'}
+           <Field component={Textarea}
                   name={'newPostText'}
                   placeholder={'start posting...'}
+                  validate={[requiredField, maxLengthTC(10), minLengthTC(2)]}
            />
        </div>
        <div>
