@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import {AppRootStateType} from "../../redux/redux-store";
 import {
- followTC,
+  followTC,
   getUsers,
   unfollowTC,
   UserType
@@ -21,13 +21,13 @@ class UsersContainer extends React.Component<UsersPropsType> {
   onPageClick = (pageNumber: number) => {
 
     this.props.getUsers(pageNumber, this.props.pageSize)
-   /* this.props.toggleIsFetching(true)
-    this.props.setCurrentPage(pageNumber)
+    /* this.props.toggleIsFetching(true)
+     this.props.setCurrentPage(pageNumber)
 
-    usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
-      this.props.toggleIsFetching(false)
-      this.props.setUsers(data.items)
-    })*/
+     usersAPI.getUsers(pageNumber, this.props.pageSize).then(data => {
+       this.props.toggleIsFetching(false)
+       this.props.setUsers(data.items)
+     })*/
   }
 
   render() {
@@ -56,9 +56,9 @@ type MapStatePropsType = {
 }
 
 type MapDispatchPropsType = {
-  getUsers: (currentPage: number, pageSize: number)=>void
-  followTC: (userId: number)=>void
-  unfollowTC: (userId: number)=>void
+  getUsers: (currentPage: number, pageSize: number) => void
+  followTC: (userId: number) => void
+  unfollowTC: (userId: number) => void
 }
 
 export type UsersPropsType = MapStatePropsType & MapDispatchPropsType

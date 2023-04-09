@@ -34,7 +34,6 @@ export type AppDispatch = ThunkDispatch<AppRootStateType, unknown, AnyAction>
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppRootStateType, unknown, AnyAction>
 
 
-
 export type ActionType = ReturnType<typeof addPostAC>
    | ReturnType<typeof sendMessageAC>
    | ReturnType<typeof follow>
@@ -47,7 +46,6 @@ export type ActionType = ReturnType<typeof addPostAC>
    | ReturnType<typeof setAuthUserData>
    | ReturnType<typeof toggleIsFollowingProgress>
    | ReturnType<typeof setStatusProfileAC>
-
 
 
 // @ts-ignore

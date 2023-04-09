@@ -10,7 +10,7 @@ import {maxLengthTC, minLengthTC, requiredField} from "../../utils/validators/va
 type FormDataDialogType = {
   newMessageBody: string
 }
-export const Dialogs: React.FC<DialogsPropsType>= (props) => {
+export const Dialogs: React.FC<DialogsPropsType> = (props) => {
 
   let dialogsElements = props.messagesPage.dialogs.map(d => <DialogItem name={d.name} key={d.id} id={d.id}/>)
   let messagesElements = props.messagesPage.messages.map(m => <Message message={m.message} key={m.id}/>)
@@ -28,7 +28,7 @@ export const Dialogs: React.FC<DialogsPropsType>= (props) => {
        <div className={s.messages}>
          <div>{messagesElements}</div>
        </div>
-      <DialogReduxForm onSubmit={addNewMessage}/>
+       <DialogReduxForm onSubmit={addNewMessage}/>
      </div>
   )
 }
@@ -39,12 +39,14 @@ export const DialogForm: React.FC<InjectedFormProps<FormDataDialogType>> = (prop
 
   return (
      <form onSubmit={props.handleSubmit}>
-         <Field component={Textarea}
-                name={'newMessageBody'}
-                placeholder='enter your message'
-                validate={[requiredField, max, min ]}
-         />
-       <div><button>send</button></div>
+       <Field component={Textarea}
+              name={'newMessageBody'}
+              placeholder='enter your message'
+              validate={[requiredField, max, min]}
+       />
+       <div>
+         <button>send</button>
+       </div>
      </form>
   )
 }

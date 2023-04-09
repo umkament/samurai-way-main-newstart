@@ -7,7 +7,7 @@ export type PostsType = {
   likesCount: number
 }
 
-type PostPropsType ={
+type PostPropsType = {
   message: string
   likesCount: number
 }

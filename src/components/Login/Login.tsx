@@ -6,7 +6,6 @@ import {connect} from "react-redux";
 import {loginTC} from "../../redux/auth-reducer";
 
 
-
 type FormDataLoginType = {
   email: string
   password: string
@@ -17,16 +16,18 @@ const min = minLengthTC(2)
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataLoginType>> = (props) => {
   return (
-       <form onSubmit={props.handleSubmit}>
-         <div><Field component={Input} name={'email'} placeholder={'e-mail'}
-                     validate={[requiredField,max, min ]}
-         /></div>
-         <div><Field component={Input} name={'password'} placeholder={'password'} type={'password'}
-                     validate={[requiredField, max, min]}
-         /></div>
-         <div><Field component={Input} name={'rememberMe'} type={'checkbox'}/> remember me</div>
-         <div><button>logIn</button></div>
-       </form>
+     <form onSubmit={props.handleSubmit}>
+       <div><Field component={Input} name={'email'} placeholder={'e-mail'}
+                   validate={[requiredField, max, min]}
+       /></div>
+       <div><Field component={Input} name={'password'} placeholder={'password'} type={'password'}
+                   validate={[requiredField, max, min]}
+       /></div>
+       <div><Field component={Input} name={'rememberMe'} type={'checkbox'}/> remember me</div>
+       <div>
+         <button>logIn</button>
+       </div>
+     </form>
   )
 }
 
@@ -37,7 +38,7 @@ const LoginReduxForm = reduxForm<FormDataLoginType>({
 
 
 type MapDispatchPropsType = {
-  loginTC: (email: string, password: string, rememberMe: boolean)=>void
+  loginTC: (email: string, password: string, rememberMe: boolean) => void
 }
 /*type LoginPropsType = {
   isAuth: boolean

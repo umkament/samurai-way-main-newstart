@@ -21,20 +21,20 @@ const App = () => {
        <div className='app-wrapper-content'>
 
          <Route path='/dialogs' render={() =>
-            <DialogsContainer />
+            <DialogsContainer/>
          }
          />
          <Route path='/profile/:userId?' render={() =>
-            <ProfileContainer />
+            <ProfileContainer/>
          }
          />
-         <Route path='/users' render={() => <UsersContainer />}/>
+         <Route path='/users' render={() => <UsersContainer/>}/>
 
          <Route path='/news' render={() => <News/>}/>
          <Route path='/music' render={() => <Music/>}/>
          <Route path='/settings' render={() => <Settings/>}/>
 
-         <Route path='/login' render={() => <Login />}/>
+         <Route path='/login' render={() => <Login/>}/>
        </div>
      </div>
   )

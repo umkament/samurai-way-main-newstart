@@ -12,8 +12,8 @@ type UsersPropsType = {
   followingInProgress: number[]
   onPageClick: (pageNumber: number) => void
   usersPage: Array<UserType>
-  followTC: (userId: number)=>void
-  unfollowTC: (userId: number)=>void
+  followTC: (userId: number) => void
+  unfollowTC: (userId: number) => void
 }
 
 const Users: FC<UsersPropsType> = (props) => {

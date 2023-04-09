@@ -13,20 +13,20 @@ type AuthType = {
 }
 
 let initialState: AuthType = {
-    id: null,
-    email: null,
-    login: null,
+  id: null,
+  email: null,
+  login: null,
   isAuth: false
 }
 
 export const authReducer = (state: InitialStateAuthType = initialState, action: ActionType): InitialStateAuthType => {
   switch (action.type) {
     case 'SET-AUTH-USER-DATA':
-return {
-  ...state,
-  ...action.payload,
-  isAuth: true
-}
+      return {
+        ...state,
+        ...action.payload,
+        isAuth: true
+      }
     default:
       return state
   }
@@ -48,9 +48,9 @@ export const getAuthUserData = () => {
   }
 }
 
-export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk=> (dispatch)=>{
+export const loginTC = (email: string, password: string, rememberMe: boolean): AppThunk => (dispatch) => {
   authAPI.postLogin(email, password, rememberMe)
-     .then (res => {
+     .then(res => {
        if (res.data.resultCode === 0) {
          dispatch(getAuthUserData())
        }

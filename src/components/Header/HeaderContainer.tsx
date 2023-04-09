@@ -7,7 +7,7 @@ import {getAuthUserData} from "../../redux/auth-reducer";
 class HeaderContainer extends React.Component<AuthPropsType> {
 
   componentDidMount() {
-   this.props.getAuthUserData()
+    this.props.getAuthUserData()
   }
 
   render() {
@@ -22,7 +22,7 @@ type MapStatePropsType = {
   login: string | null
 }
 type MapDispatchPropsType = {
-  getAuthUserData: ()=>void
+  getAuthUserData: () => void
 }
 export type AuthPropsType = MapStatePropsType & MapDispatchPropsType
 
