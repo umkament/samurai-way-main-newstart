@@ -2,23 +2,26 @@ import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input} from "../FormsForComponent/FormsControl";
 import {maxLengthTC, minLengthTC, requiredField} from "../../utils/validators/validators";
+import {connect} from "react-redux";
+import {loginTC} from "../../redux/auth-reducer";
+
 
 
 type FormDataLoginType = {
-  login: string
+  email: string
   password: string
   rememberMe: boolean
 }
-const max = maxLengthTC(10)
-const min = minLengthTC(4)
+const max = maxLengthTC(50)
+const min = minLengthTC(2)
 
 export const LoginForm: React.FC<InjectedFormProps<FormDataLoginType>> = (props) => {
   return (
        <form onSubmit={props.handleSubmit}>
-         <div><Field component={Input} name={'login'} placeholder={'login'}
+         <div><Field component={Input} name={'email'} placeholder={'e-mail'}
                      validate={[requiredField,max, min ]}
          /></div>
-         <div><Field component={Input} name={'password'} placeholder={'password'}
+         <div><Field component={Input} name={'password'} placeholder={'password'} type={'password'}
                      validate={[requiredField, max, min]}
          /></div>
          <div><Field component={Input} name={'rememberMe'} type={'checkbox'}/> remember me</div>
@@ -33,10 +36,22 @@ const LoginReduxForm = reduxForm<FormDataLoginType>({
 })(LoginForm)
 
 
-export const Login = () => {
+type MapDispatchPropsType = {
+  loginTC: (email: string, password: string, rememberMe: boolean)=>void
+}
+/*type LoginPropsType = {
+  isAuth: boolean
+  loginTC: (email: string, password: string, rememberMe: boolean)=>void
+}*/
+
+
+const Login: React.FC<MapDispatchPropsType> = (props) => {
   const onSubmit = (formData: FormDataLoginType) => {
     console.log(formData)
+    props.loginTC(formData.email, formData.password, formData.rememberMe)
   }
+
+
   return (
      <div>
        <h1>LOGIN</h1>
@@ -44,3 +59,5 @@ export const Login = () => {
      </div>
   )
 }
+
+export default connect(null, {loginTC})(Login)
